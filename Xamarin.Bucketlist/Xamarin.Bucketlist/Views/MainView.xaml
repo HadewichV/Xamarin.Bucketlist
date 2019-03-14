@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamarin.Bucketlist.Views.MainView"
+             Title="Bucket Lists">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add List" x:Name="btnAddBucketList" Clicked="BtnAddBucketList_Clicked"></ToolbarItem>
+        <ToolbarItem Text="&#x2699;" x:Name="btnSettings" Clicked="BtnSettings_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource MainLayout}">
+            <ListView x:Name="lvBucketLists" ItemTapped="lvBucketLists_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem x:Name="mnuBucketEdit" Text="Edit" Clicked="MnuBucketEdit_Clicked" CommandParameter="{Binding .}"/>
+                                <MenuItem x:Name="mnuBucketDelete" Text="Delete" Clicked="MnuBucketDelete_Clicked" CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                            <StackLayout HeightRequest="50">
+                                <Label Text="{Binding Title}"
+                                       VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
